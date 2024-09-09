@@ -105,7 +105,7 @@ export function Learning(){
                 </ol>
             </div>
             <hr></hr>
-            <section className="d-flex justify-contents-between">
+            <section className="d-flex flex-wrap justify-content-between">
                 {officeTemplate}
             </section>
           

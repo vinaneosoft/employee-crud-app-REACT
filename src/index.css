@@ -1,6 +1,7 @@
 .fontClass {
   margin: 2;
   font-family: 'Times New Roman', Times, serif;
+  background-color: lightgrey;
 }
 
 code {
