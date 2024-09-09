@@ -1,11 +1,11 @@
-export function OfficeLocation(){
+export function OfficeLocation(props){  /* use any variable name */
     return (
         <article className="border border-5">
             <header>
-                <h4>Dadar, Mumbai (Headquarters)</h4>
+                <h4>{props.office.location}</h4>
             </header>
             <address>
-            The Ruby Tower, Senapati Bapat Marg, Dadar West, Mumbai, Maharashtra 400028
+                {props.office.address}
             </address>
         </article>
     );
