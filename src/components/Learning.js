@@ -1,6 +1,7 @@
 /** hooks chapter : we will take user input */
 
 import { Dadar } from "./Dadar";
+import { OfficeLocation } from "./OfficeLocation";
 import { Rabale } from "./Rabale";
 
 export function Learning(){
@@ -78,6 +79,8 @@ export function Learning(){
                     {companyOffices.map((city, i)=><li key={'o'+i}>{city}</li>)}
                 </ol>
             </div>
+            <hr></hr>
+            { <OfficeLocation></OfficeLocation>}
         </>
     );
 }
