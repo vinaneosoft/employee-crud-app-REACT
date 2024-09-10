@@ -45,7 +45,7 @@ export function Learning(){
             <div>
                 <h4>If then else</h4>
                 {
-                 joinLocation.toLowerCase()=='rabale'?  
+                 joinLocation.toLowerCase()==='rabale'?  
                  <address> 
                     Sigma IT Park, <br />
                      Unit No. 501, TTC Industrial Area, <br />
@@ -63,7 +63,7 @@ export function Learning(){
             <hr></hr>
             <div>
                 <h4>if-then</h4>
-                {joinLocation.toLowerCase()=='rabale' && 
+                {joinLocation.toLowerCase()==='rabale' && 
                 <address> 
                 Sigma IT Park, <br />
                  Unit No. 501, TTC Industrial Area, <br />
@@ -73,7 +73,7 @@ export function Learning(){
             </div>
             <hr></hr>
             <div>
-                {joinLocation.toLowerCase()=='dadar' && 
+                {joinLocation.toLowerCase()==='dadar' && 
                 <address>
                 The Ruby Tower,  <br />
                 Senapati Bapat Marg,  <br />
@@ -85,7 +85,7 @@ export function Learning(){
             <div>
             <h4>If then else (template in component)</h4>
                 {
-                 joinLocation.toLowerCase()=='rabale'?<Rabale></Rabale>:<Dadar></Dadar>
+                 joinLocation.toLowerCase()==='rabale'?<Rabale></Rabale>:<Dadar></Dadar>
                 }
             </div>
             <div>
