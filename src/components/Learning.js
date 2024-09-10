@@ -1,10 +1,19 @@
 /** hooks chapter : we will take user input */
 
+import { useState } from "react";
 import { Dadar } from "./Dadar";
 import { OfficeLocation } from "./OfficeLocation";
 import { Rabale } from "./Rabale";
 
 export function Learning(){
+
+   const [companyStyle, setStyle] =useState({
+        color:'green',
+        backgroundColor :'yellow',
+        width:'50%',
+        textAlign:'center'
+    });
+   
     let companyName="Neosoft"
     let joinLocation="rabale";
     let companyOffices=['Dadar, Mumbai', 'Rabale, Mumbai', 'Parel, Mumbai', 'Pune' , 'Noida' ]
@@ -41,29 +50,19 @@ export function Learning(){
     let officeTemplate=offices.filter((office)=>office.location.toLowerCase().includes('mumbai'))
     .map((office, i)=><OfficeLocation  key={'co'+i} office={office}></OfficeLocation>) /* react props*/
 
-
-    let companyStyle={
-        color:'green',
-        backgroundColor :'yellow',
-        width:'50%',
-        textAlign:'center'
-    }
-
     let styleClasses=['text-success', 'border','border-2', 'border-info'];
 
     function test(event){
         console.log(event.target);
     }
-    function changeStyle(){
-
-        companyStyle.backgroundColor='lightblue'; // in react every object is immutable
-        // object needs to be managed in state, and state change we have to do via react hook,
-        // save in changes in new object
-        
+  
+    function changeBackground(bgColor){
+        setStyle({...companyStyle, backgroundColor:bgColor})
     }
     return (
         <>
-            <h5 style={companyStyle} onMouseOver={changeStyle}>{companyName}</h5>  {/* JSX expression*/} 
+            <h5 style={companyStyle} onMouseOver={()=>changeBackground('lightblue')}
+                onMouseOut={()=>changeBackground('yellow') }>{companyName}</h5>  {/* JSX expression*/} 
             <button className="btn btn-info" onClick={test}>CLICK</button>
             <div>
                 <h4 style={{backgroundColor:"pink"}}>If then else</h4>
