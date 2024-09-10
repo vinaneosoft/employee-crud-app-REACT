@@ -49,10 +49,22 @@ export function Learning(){
         textAlign:'center'
     }
 
-    let styleClasses=['text-success', 'border','border-2', 'border-info']
+    let styleClasses=['text-success', 'border','border-2', 'border-info'];
+
+    function test(event){
+        console.log(event.target);
+    }
+    function changeStyle(){
+
+        companyStyle.backgroundColor='lightblue'; // in react every object is immutable
+        // object needs to be managed in state, and state change we have to do via react hook,
+        // save in changes in new object
+        
+    }
     return (
         <>
-            <h5 style={companyStyle}>{companyName}</h5>  {/* JSX expression*/} 
+            <h5 style={companyStyle} onMouseOver={changeStyle}>{companyName}</h5>  {/* JSX expression*/} 
+            <button className="btn btn-info" onClick={test}>CLICK</button>
             <div>
                 <h4 style={{backgroundColor:"pink"}}>If then else</h4>
                 {
