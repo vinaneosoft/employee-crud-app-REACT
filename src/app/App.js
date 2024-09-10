@@ -15,6 +15,7 @@ function App() {
     <>  
         <h3 className='mainHeading'>{applicationName}</h3>
         <Header></Header>
+        <Learning></Learning>
         <NeoEmployees></NeoEmployees>
        
         <Footer></Footer>

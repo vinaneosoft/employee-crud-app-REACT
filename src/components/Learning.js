@@ -38,12 +38,23 @@ export function Learning(){
         }
     ]
 
-    let officeTemplate=offices.map((office)=><OfficeLocation  office={office}></OfficeLocation>) /* react props*/
+    let officeTemplate=offices.filter((office)=>office.location.toLowerCase().includes('mumbai'))
+    .map((office, i)=><OfficeLocation  key={'co'+i} office={office}></OfficeLocation>) /* react props*/
+
+
+    let companyStyle={
+        color:'green',
+        backgroundColor :'yellow',
+        width:'50%',
+        textAlign:'center'
+    }
+
+    let styleClasses=['text-success', 'border','border-2', 'border-info']
     return (
         <>
-            <h5>{companyName}</h5>  {/* JSX expression*/} 
+            <h5 style={companyStyle}>{companyName}</h5>  {/* JSX expression*/} 
             <div>
-                <h4>If then else</h4>
+                <h4 style={{backgroundColor:"pink"}}>If then else</h4>
                 {
                  joinLocation.toLowerCase()==='rabale'?  
                  <address> 
@@ -62,7 +73,7 @@ export function Learning(){
             </div>
             <hr></hr>
             <div>
-                <h4>if-then</h4>
+                <h4 className="text-success border border-3">if-then</h4>
                 {joinLocation.toLowerCase()==='rabale' && 
                 <address> 
                 Sigma IT Park, <br />
@@ -93,7 +104,7 @@ export function Learning(){
                 <i>{56*78}</i>
             </div>
             <hr></hr>
-            <h4>Company Offices</h4>
+            <h4 className={styleClasses.join(" ")}>Company Offices</h4>
             <div>
                 <ol>
                     {liNodes}

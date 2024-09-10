@@ -2,7 +2,7 @@
 
 export function EmployeeCard({employee, deleteEmployee}){
 return (
-<div class="col-sm-6 border border-4">
+<div className="col-sm-6 border border-4">
 <article className="row bg-secondary p-2">
     <figure className="col-lg-4 text-center">
         <h6>#{employee._id}</h6>
