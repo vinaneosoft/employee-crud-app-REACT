@@ -1,6 +1,6 @@
 /** hooks chapter : we will take user input */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dadar } from "./Dadar";
 import { OfficeLocation } from "./OfficeLocation";
 import { Rabale } from "./Rabale";
@@ -13,11 +13,38 @@ export function Learning(){
         width:'50%',
         textAlign:'center'
     });
-   
+    let [companyOffices, setOffice]=useState(['Dadar, Mumbai', 'Rabale, Mumbai', 'Parel, Mumbai' ])
+   /** no dependancy: 
+    * after every rendering of component, useEffect hook gets called... */
+ /*   useEffect(()=>{
+        console.log("u can do any code after component gets rendered");
+        //afterrender();
+    });  */
+    /** empty dependancy:
+     * useEffect will be called only on initial render of component, after 
+     * that though components gets re rendered, useEfect will not get called
+     */
+     useEffect(()=>{
+        console.log("u can do any code after component gets rendered");
+        //afterrender();
+    }, []); 
+    /** dependancy:
+     * useEffect will be called on initial render of component, after 
+     * that if components gets re rendered due to state change in depedancy mentioned in useEffect,
+     * then also useEfect will get called
+     */
+   /*  useEffect(()=>{
+        console.log("u can do any code after component gets rendered");
+        //afterrender();
+    }, [companyOffices]);
+  */
+    function afterrender(){
+        console.log("more work to do");
+    }
     let companyName="Neosoft"
     let joinLocation="rabale";
-    let companyOffices=['Dadar, Mumbai', 'Rabale, Mumbai', 'Parel, Mumbai', 'Pune' , 'Noida' ]
-    
+
+ 
     const liNodes=companyOffices.map((city,i)=><li key={'c'+i}>{city}</li>)
     
     let getMessage=function(){
@@ -59,6 +86,12 @@ export function Learning(){
     function changeBackground(bgColor){
         setStyle({...companyStyle, backgroundColor:bgColor})
     }
+
+    function addOffice(office){
+        setOffice([...companyOffices, office])
+    }
+
+
     return (
         <>
             <h5 style={companyStyle} onMouseOver={()=>changeBackground('lightblue')}
@@ -126,11 +159,11 @@ export function Learning(){
                     {companyOffices.map((city, i)=><li key={'o'+i}>{city}</li>)}
                 </ol>
             </div>
+            <button onClick={()=>addOffice('Noida')}>ADD NEW LOCATION</button>
             <hr></hr>
             <section className="d-flex flex-wrap justify-content-between">
                 {officeTemplate}
             </section>
-          
         </>
     );
 }

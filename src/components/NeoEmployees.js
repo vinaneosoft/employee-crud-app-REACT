@@ -3,7 +3,6 @@ import { EmployeeCard } from "./EmployeeCard";
 
 
 export function NeoEmployees(){
-
     function deleteEmployee(_id){
         // employee to be deleted
         console.log("data from child:"+_id);
