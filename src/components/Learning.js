@@ -17,28 +17,46 @@ export function Learning(){
    /** no dependancy: 
     * after every rendering of component, useEffect hook gets called... */
  /*   useEffect(()=>{
-        console.log("u can do any code after component gets rendered");
+        console.log("this is setup in useEffect, u can do any code after component gets rendered");
         //afterrender();
+        return ()=>{
+            console.log("this is cleanup in useEffect");
+            
+        }
     });  */
     /** empty dependancy:
      * useEffect will be called only on initial render of component, after 
      * that though components gets re rendered, useEfect will not get called
      */
-     useEffect(()=>{
+/*      useEffect(()=>{
         console.log("u can do any code after component gets rendered");
         //afterrender();
        
-    }, []); 
+    }, []);  */
     /** dependancy:
      * useEffect will be called on initial render of component, after 
      * that if components gets re rendered due to state change in depedancy mentioned in useEffect,
      * then also useEfect will get called
      */
-   /*  useEffect(()=>{
-        console.log("u can do any code after component gets rendered");
+    let l1=0,l2=0; // normal variables gets reinitialized in every rerender
+    // if we want to maintain the value across multiple renders, then we have to use
+    // hook useRef
+   useEffect(()=>{
+        console.log("setup... u can do any code after component gets rendered");
+        console.log(companyOffices);
+        l2=companyOffices.length;
+        console.log("new length:"+l2);
+        console.log("old length:"+l1);
+        console.log("difference:",l2-l1);
+        return ()=>{
+            console.log("cleanup...");
+            console.log(companyOffices);
+            l1=companyOffices.length;
+            console.log("old length:"+l1);
+        }
         //afterrender();
     }, [companyOffices]);
-  */
+
     function afterrender(){
         console.log("more work to do");
     }
