@@ -13,9 +13,12 @@ export function Learning(){
         width:'50%',
         textAlign:'center'
     });
-    let [companyOffices, setOffice]=useState(['Dadar, Mumbai', 'Rabale, Mumbai', 'Parel, Mumbai' ])
+    let [companyOffices, setOffice]=useState(['Mumbai','Dadar, Mumbai', 'Rabale, Mumbai', 'Parel, Mumbai'])
 
     let locationNode=useRef();
+    let officeNode=useRef();
+    let [offices, setOffices]= useState(()=>initialArray());
+ 
    /** no dependancy: 
     * after every rendering of component, useEffect hook gets called... */
  /*   useEffect(()=>{
@@ -47,20 +50,22 @@ export function Learning(){
     //console.log(l1);
    useEffect(()=>{
         console.log("setup... u can do any code after component gets rendered");
-        console.log(companyOffices);
-        console.log(l2);      
+        console.log(offices);
+
+        /* console.log(l2);      
         l2=companyOffices.length;
         console.log("new length:"+l2);
         console.log("old length:"+l1.current);
-        console.log("difference:",l2-l1.current);
+        console.log("difference:",l2-l1.current);*/
         return ()=>{
             console.log("cleanup...");
-            console.log(companyOffices);
+           /*  console.log(companyOffices);
             l1.current=companyOffices.length;
-            console.log("old length:"+l1.current);
-        }
+            console.log("old length:"+l1.current); */
+           
+        } 
         //afterrender();
-    }, [companyOffices]);
+    }, [companyOffices, offices]);
     function afterrender(){
         console.log("more work to do");
     }
@@ -72,30 +77,9 @@ export function Learning(){
     let getMessage=function(){
         return "hello we are implementing examples on JSX expression"
     }
-    let offices= [
-        {
-            location:'Dadar, Mumbai',
-            address:'The Ruby Tower, Senapati Bapat Marg, Dadar West, Mumbai, Maharashtra 400028'
-        },
-        {
-            location:'Rabale, Mumbai',
-            address:'Sigma IT Park, Unit No. 501, TTC Industrial Area, Rabale, Navi Mumbai, Maharashtra 400701'
-        }, 
-        {
-            location:'Parel, Mumbai',
-            address:'Business Arcade, Sayani Road, Opp. S. T Bus Stand, Lower Parel, Mumbai, Maharashtra 400013'
-        },
-        {
-            location:'Pune',
-            address:'IT-09, 10th Floor, Blue Ridge SEZ, Hinjewadi, Pune, Maharashtra 411057'
-        },
-        {
-            location:'Noida',
-            address:'WorkEdge Coworx - Coworking Noida, B 23, Sector 63 Road, B Block, Sector 63, Noida, Uttar Pradesh 201301'
-        }
-    ]
-
-    let officeTemplate=offices.filter((office)=>office.location.toLowerCase().includes('mumbai'))
+    
+   
+    let officeTemplate=offices
     .map((office, i)=><OfficeLocation  key={'co'+i} office={office}></OfficeLocation>) /* react props*/
 
     let styleClasses=['text-success', 'border','border-2', 'border-info'];
@@ -103,16 +87,16 @@ export function Learning(){
     function test(event){
         console.log(event.target);
     }
-  
     function changeBackground(bgColor){
         setStyle({...companyStyle, backgroundColor:bgColor})
     }
-
     function addOffice(office){
         setOffice([...companyOffices, office])
     }
-
-
+    function filter(location){
+        let filters=offices.filter((office)=>office.location.toLowerCase().includes(location.toLowerCase()))
+        setOffices(filters); // [filers]
+    }
     return (
         <>
             <h5 style={companyStyle} onMouseOver={()=>changeBackground('lightblue')}
@@ -184,9 +168,40 @@ export function Learning(){
             <input type="text" defaultValue="" ref={locationNode}></input>
             <button onClick={()=>addOffice(locationNode.current.value)}>ADD NEW OFFICE</button>
             <hr></hr>
+            <label>Enter location to filter:</label>
+            <select ref={officeNode} onChange={()=>filter(officeNode.current.value)}>
+                <option>-----</option>
+                {companyOffices.map((office, i)=><option key={'of'+i}>{office}</option>)}
+            </select>
+            <button onClick={()=>setOffices(initialArray())}>RESET</button>
             <section className="d-flex flex-wrap justify-content-between">
                 {officeTemplate}
             </section>
         </>
     );
+}
+
+function initialArray(){
+    return [
+        {
+            location:'Dadar, Mumbai',
+            address:'The Ruby Tower, Senapati Bapat Marg, Dadar West, Mumbai, Maharashtra 400028'
+        },
+        {
+            location:'Rabale, Mumbai',
+            address:'Sigma IT Park, Unit No. 501, TTC Industrial Area, Rabale, Navi Mumbai, Maharashtra 400701'
+        }, 
+        {
+            location:'Parel, Mumbai',
+            address:'Business Arcade, Sayani Road, Opp. S. T Bus Stand, Lower Parel, Mumbai, Maharashtra 400013'
+        },
+        {
+            location:'Pune',
+            address:'IT-09, 10th Floor, Blue Ridge SEZ, Hinjewadi, Pune, Maharashtra 411057'
+        },
+        {
+            location:'Noida',
+            address:'WorkEdge Coworx - Coworking Noida, B 23, Sector 63 Road, B Block, Sector 63, Noida, Uttar Pradesh 201301'
+        }
+    ]
 }
