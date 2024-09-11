@@ -1,6 +1,6 @@
 /** hooks chapter : we will take user input */
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Dadar } from "./Dadar";
 import { OfficeLocation } from "./OfficeLocation";
 import { Rabale } from "./Rabale";
@@ -38,38 +38,39 @@ export function Learning(){
      * that if components gets re rendered due to state change in depedancy mentioned in useEffect,
      * then also useEfect will get called
      */
-    let l1=0,l2=0; // normal variables gets reinitialized in every rerender
+    let l2=0; // normal variables gets reinitialized in every rerender
     // if we want to maintain the value across multiple renders, then we have to use
     // hook useRef
+    let l1=useRef(companyOffices.length); /*React.MutableRefObject<number> */
+    //console.log(l1);
+    
    useEffect(()=>{
         console.log("setup... u can do any code after component gets rendered");
         console.log(companyOffices);
+        console.log(l2);      
         l2=companyOffices.length;
         console.log("new length:"+l2);
-        console.log("old length:"+l1);
-        console.log("difference:",l2-l1);
+        console.log("old length:"+l1.current);
+        console.log("difference:",l2-l1.current);
         return ()=>{
             console.log("cleanup...");
             console.log(companyOffices);
-            l1=companyOffices.length;
-            console.log("old length:"+l1);
+            l1.current=companyOffices.length;
+            console.log("old length:"+l1.current);
         }
         //afterrender();
     }, [companyOffices]);
-
     function afterrender(){
         console.log("more work to do");
     }
     let companyName="Neosoft"
     let joinLocation="rabale";
 
- 
     const liNodes=companyOffices.map((city,i)=><li key={'c'+i}>{city}</li>)
     
     let getMessage=function(){
         return "hello we are implementing examples on JSX expression"
     }
-
     let offices= [
         {
             location:'Dadar, Mumbai',
