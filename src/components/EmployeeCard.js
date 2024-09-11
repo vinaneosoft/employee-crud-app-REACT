@@ -9,7 +9,6 @@ return (
         <figcaption><b>{employee.emp_name}</b></figcaption>
         <img className="rounded-pill" src="https://www.nordstudio.ch/wp/wp-content/uploads/2018/02/mitarbeiter-business-fotos_06.jpg" height="170" width="170" alt="employee" />
         <button type="button" className="btn btn-primary">Edit Pic</button>
-      
     </figure>
     <div className="col-lg-8">
         <p><span>{employee.emp_name}</span> joined on <i>{employee.joining_date.toString()}</i></p>

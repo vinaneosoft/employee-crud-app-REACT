@@ -39,11 +39,10 @@ export function Learning(){
      * then also useEfect will get called
      */
     let l2=0; // normal variables gets reinitialized in every rerender
-    // if we want to maintain the value across multiple renders, then we have to use
+    // if we want to maintain the value internally across multiple renders, then we have to use
     // hook useRef
     let l1=useRef(companyOffices.length); /*React.MutableRefObject<number> */
     //console.log(l1);
-    
    useEffect(()=>{
         console.log("setup... u can do any code after component gets rendered");
         console.log(companyOffices);
@@ -179,6 +178,7 @@ export function Learning(){
                     {companyOffices.map((city, i)=><li key={'o'+i}>{city}</li>)}
                 </ol>
             </div>
+            <input type="text" value="noida"></input>
             <button onClick={()=>addOffice('Noida')}>ADD NEW LOCATION</button>
             <hr></hr>
             <section className="d-flex flex-wrap justify-content-between">
