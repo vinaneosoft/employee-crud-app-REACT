@@ -27,6 +27,7 @@ export function Learning(){
      useEffect(()=>{
         console.log("u can do any code after component gets rendered");
         //afterrender();
+       
     }, []); 
     /** dependancy:
      * useEffect will be called on initial render of component, after 
