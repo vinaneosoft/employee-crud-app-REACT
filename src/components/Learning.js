@@ -14,6 +14,8 @@ export function Learning(){
         textAlign:'center'
     });
     let [companyOffices, setOffice]=useState(['Dadar, Mumbai', 'Rabale, Mumbai', 'Parel, Mumbai' ])
+
+    let locationNode=useRef();
    /** no dependancy: 
     * after every rendering of component, useEffect hook gets called... */
  /*   useEffect(()=>{
@@ -178,8 +180,9 @@ export function Learning(){
                     {companyOffices.map((city, i)=><li key={'o'+i}>{city}</li>)}
                 </ol>
             </div>
-            <input type="text" value="noida"></input>
-            <button onClick={()=>addOffice('Noida')}>ADD NEW LOCATION</button>
+           {  /* uncontrolled*/ }
+            <input type="text" defaultValue="" ref={locationNode}></input>
+            <button onClick={()=>addOffice(locationNode.current.value)}>ADD NEW OFFICE</button>
             <hr></hr>
             <section className="d-flex flex-wrap justify-content-between">
                 {officeTemplate}

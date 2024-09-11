@@ -15,14 +15,25 @@ export function Counter(){
    return(
     <div>
         <table>
-           <tbody>
-           <tr><th>Normal Var:</th><td>{normalCounter}</td><td><button onClick={()=>{
-            normalCounter++; console.log(normalCounter);
-            }}>INCREMENT</button></td><td>normal variable state never gets maintained</td></tr>
-            <tr><th>State Var:</th><td>{stateCounter}</td><td><button onClick={()=>setCounter(++stateCounter)}>INCREMENT</button></td><td>if state value changes components gets re rendered</td></tr>
-            <tr><th>Ref Var:</th><td>{refCounter.current}</td><td> <button onClick={()=>
-            {refCounter.current=refCounter.current+1; console.log(refCounter.current);
-            }}>INCREMENT</button></td><td>if ref value changes, component will not get rerendered</td></tr>
+        <tbody>
+            <tr>
+                <th>Normal Var:</th>
+                <td>{normalCounter}</td>
+                <td><button onClick={()=>console.log(++normalCounter)}>INCREMENT</button></td>
+                <td>normal variable state never gets maintained</td>
+            </tr>
+            <tr>
+                <th>State Var:</th>
+                <td>{stateCounter}</td>
+                <td><button onClick={()=>setCounter(++stateCounter)}>INCREMENT</button></td>
+                <td>if state value changes components gets re rendered</td>
+            </tr>
+            <tr>
+                <th>Ref Var:</th>
+                <td>{refCounter.current}</td>
+                <td> <button onClick={()=>console.log(++refCounter.current)}>INCREMENT</button></td>
+                <td>if ref value changes, component will not get rerendered</td>
+            </tr>
            </tbody>
         </table>
         
