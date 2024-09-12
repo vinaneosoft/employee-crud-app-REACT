@@ -2,7 +2,6 @@ import { useRef } from "react";
 
 
 export function AdminLogin(){
-
     let usernameNode=useRef();
     let passwordNode=useRef();
     function collectData(ev){
