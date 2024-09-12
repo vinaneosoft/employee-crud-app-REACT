@@ -94,8 +94,12 @@ export function Learning(){
         setOffice([...companyOffices, office])
     }
     function filter(location){
+        if(location==='all')
+            setOffices(initialArray())
+        else{
         let filters=offices.filter((office)=>office.location.toLowerCase().includes(location.toLowerCase()))
         setOffices(filters); // [filers]
+        }
     }
     return (
         <>
@@ -170,7 +174,7 @@ export function Learning(){
             <hr></hr>
             <label>Enter location to filter:</label>
             <select ref={officeNode} onChange={()=>filter(officeNode.current.value)}>
-                <option>-----</option>
+                <option>all</option>
                 {companyOffices.map((office, i)=><option key={'of'+i}>{office}</option>)}
             </select>
             <button onClick={()=>setOffices(initialArray())}>RESET</button>
