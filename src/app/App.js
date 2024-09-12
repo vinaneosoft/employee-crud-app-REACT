@@ -6,6 +6,7 @@ import Footer from '../footer/Footer';
 import { Learning } from '../components/Learning';
 import { NeoEmployees } from '../components/NeoEmployees';
 import { Counter } from '../components/Counter';
+import { EmployeeForm } from '../components/EmployeeForm';
 
 /* <React.Fragment> </React.Fragment> */
 function App() {
@@ -16,7 +17,7 @@ function App() {
     <>  
         <h3 className='mainHeading'>{applicationName}</h3>
         <Header></Header>
-        <Learning></Learning>
+        <EmployeeForm></EmployeeForm>
         <Footer></Footer>
     </>
   );
