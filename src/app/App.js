@@ -10,21 +10,22 @@ import { EmployeeForm } from '../components/EmployeeForm';
 import { AdminLogin } from '../components/AdminLogin';
 import { appName } from './model/data';
 import { MyContext } from './model/context';
+import { Outlet } from 'react-router-dom';
 
 
 /* <React.Fragment> </React.Fragment> */
 function App() {
   let  [applicationName, setName]=useState(appName)
   // development : JS
-  setTimeout(()=>{
+/*   setTimeout(()=>{
     setName("NEO EMP MGMT")
-  }, 3000)
+  }, 3000) */
   return (
     // template : JSX
     <MyContext.Provider value={applicationName}>  
         <h3 className='mainHeading'>{applicationName}</h3>
         <Header></Header>
-        <AdminLogin></AdminLogin>
+         <Outlet></Outlet>
         <Footer></Footer>
     </MyContext.Provider>
   );

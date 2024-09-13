@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { MyContext } from "../app/model/context";
+import { Link } from "react-router-dom";
 
 
 export function Navbar(){
@@ -17,7 +18,7 @@ return(
           <a className="nav-link"  href="#">Home</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Link</a>
+          <Link className="nav-link" to="employees">Show Employees</Link>
         </li>
       </ul>
       <form className="d-flex" role="search">
