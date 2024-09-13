@@ -5,11 +5,15 @@ import App from './app/App';
 import reportWebVitals from './reportWebVitals';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
 import { NeoEmployees } from './components/NeoEmployees.js';
 import { Home } from './components/Home.js';
 
 const childRoutes=[
+    {
+        path:"/",
+        loader:()=>redirect('home') 
+    },
     {
         path:'employees',
         element:<NeoEmployees></NeoEmployees>
@@ -27,6 +31,7 @@ const rootRoutes=[
     }
 ]
 const employeesrouter=createBrowserRouter(rootRoutes);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
