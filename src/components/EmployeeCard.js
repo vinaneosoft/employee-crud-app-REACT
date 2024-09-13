@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 export function EmployeeCard({employee, deleteEmployee}){
@@ -19,7 +20,7 @@ return (
             <li className="list-group-item"><small>Department: </small> <b>{employee.dept_code}</b></li>
         </ol>
         <div>
-            <button type="button" className="btn btn-info m-2">EDIT</button> 
+            <Link to={`/editemployee/${employee._id}`} className="btn btn-info m-2">EDIT</Link> 
             <button type="button" onClick={()=>deleteEmployee(employee._id)} className="btn btn-danger">DELETE</button>
         </div>
     </div>

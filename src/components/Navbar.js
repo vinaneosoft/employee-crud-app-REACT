@@ -21,7 +21,7 @@ return(
           <Link className="nav-link" to="employees">Show Employees</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="">ADD Employee</Link>
+          <Link className="nav-link" to="addemployee">ADD Employee</Link>
         </li>
       </ul>
       <form className="d-flex" role="search">
@@ -30,7 +30,7 @@ return(
       </form>
       <ul className="navbar-nav  mb-2 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link"  href="#">LOGIN</a>
+          <Link className="nav-link" to="adminlogin">LOGIN</Link>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#">LOGOUT</a>

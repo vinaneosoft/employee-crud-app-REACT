@@ -8,6 +8,8 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
 import { NeoEmployees } from './components/NeoEmployees.js';
 import { Home } from './components/Home.js';
+import { EmployeeForm } from './components/EmployeeForm.js';
+import { AdminLogin } from './components/AdminLogin.js';
 
 const childRoutes=[
     {
@@ -21,6 +23,18 @@ const childRoutes=[
     {
         path:'home',
         element:<Home></Home>
+    },
+    {
+        path:'addemployee',
+        element:<EmployeeForm></EmployeeForm>
+    },
+    {
+        path:'editemployee/:_id',
+        element:<EmployeeForm></EmployeeForm>
+    },
+    {
+        path:'adminlogin',
+        element:<AdminLogin></AdminLogin>
     }
 ]
 const rootRoutes=[
