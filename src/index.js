@@ -7,11 +7,16 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { NeoEmployees } from './components/NeoEmployees.js';
+import { Home } from './components/Home.js';
 
 const childRoutes=[
     {
         path:'employees',
         element:<NeoEmployees></NeoEmployees>
+    },
+    {
+        path:'home',
+        element:<Home></Home>
     }
 ]
 const rootRoutes=[
