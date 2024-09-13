@@ -5,7 +5,7 @@ import { Employee } from "../classes/Employee";
 export function EmployeeForm(){
     const departments=['LD', 'JS','HR','PHP','JAVA'];
     let [employee, setEmployee]=useState(new Employee());
-
+    // use hook useParams to extract data from current active route
     function changeState(ev){
        console.log(ev.target.value);
        console.log(ev.target.id);
