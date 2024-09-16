@@ -20,8 +20,8 @@ const childRoutes=[
     {
         path:'employees',
         element:<NeoEmployees></NeoEmployees>,
-        loader:()=>{
-            return getAllEmployees();
+        loader:async ()=>{
+            return await getAllEmployees();
         }
     },
     {
