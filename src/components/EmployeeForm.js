@@ -20,12 +20,19 @@ export function EmployeeForm(){
     })
     function collectData(ev){
         ev.preventDefault();
-        console.log(employee);
-        // add : addEmployee
-        // update : updateEmploye
         if(_id==undefined){
-            addEmployee(employee);
+           addEmp();
         }
+        else{
+            console.log("update logic");
+        }
+    }
+    async function addEmp(){
+        const emp=await addEmployee(employee);
+        if(emp!=null)
+            window.alert(`Employee with id ${emp._id} added successfully...`)
+        else
+            window.alert("Something went wring while adding new employee....")
     }
     return (
      <>

@@ -2,21 +2,22 @@ import axios from 'axios';
 
 
 const url="http://localhost:5000/employees";
-async function addEmployee(employee){
-    const response=await axios.post(url,employee);
-    console.log(response);
+//const url2="http://localhost:3000/employees" // for json-server
+export async function addEmployee(employee){
+    const response=await axios.post(url+"/add",employee);
+    //const response=await axios.post(url,employee);
+    return response.data;
 }
-function updateEmployee(employee){
+export function updateEmployee(employee){
 
 }
-function deleteEmployeeById(_id){
+export function deleteEmployeeById(_id){
 
 }
-function getEmployeeById(_id){
+export function getEmployeeById(_id){
     
 }
-function getAllEmployees(){
+export function getAllEmployees(){
 
 }
 
-module.exports={addEmployee, updateEmployee,deleteEmployeeById, getEmployeeById,getAllEmployees}
