@@ -10,6 +10,7 @@ import { NeoEmployees } from './components/NeoEmployees.js';
 import { Home } from './components/Home.js';
 import { EmployeeForm } from './components/EmployeeForm.js';
 import { AdminLogin } from './components/AdminLogin.js';
+import { getAllEmployees } from './model/EmployeeCRUD.js';
 
 const childRoutes=[
     {
@@ -18,7 +19,10 @@ const childRoutes=[
     },
     {
         path:'employees',
-        element:<NeoEmployees></NeoEmployees>
+        element:<NeoEmployees></NeoEmployees>,
+        loader:()=>{
+            return getAllEmployees();
+        }
     },
     {
         path:'home',
