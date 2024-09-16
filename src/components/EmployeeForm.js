@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Employee } from "../classes/Employee";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {addEmployee} from '../model/EmployeeCRUD';
 
 export function EmployeeForm(){
     const departments=['LD', 'JS','HR','PHP','JAVA'];
     let [employee, setEmployee]=useState(new Employee());
+    const navigate=useNavigate();
     const {_id}=useParams();
     console.log(_id);
     // further we will search the employee to display in form
@@ -30,8 +31,10 @@ export function EmployeeForm(){
     async function addEmp(){
         const emp=await addEmployee(employee);
        // console.log(emp);
-        if(emp!==null && emp!=="")
+        if(emp!==null && emp!==""){
             window.alert(`Employee with id ${emp._id} added successfully...`)
+            navigate('/employees');
+        }
         else
             window.alert("Something went wrong while adding new employee....")
     }
