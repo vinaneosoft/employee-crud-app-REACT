@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Employee } from "../classes/Employee";
 import { useParams } from "react-router-dom";
-
+import {addEmployee} from '../model/EmployeeCRUD';
 
 export function EmployeeForm(){
     const departments=['LD', 'JS','HR','PHP','JAVA'];
@@ -23,6 +23,9 @@ export function EmployeeForm(){
         console.log(employee);
         // add : addEmployee
         // update : updateEmploye
+        if(_id==undefined){
+            addEmployee(employee);
+        }
     }
     return (
      <>
