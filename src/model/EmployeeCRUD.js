@@ -6,6 +6,7 @@ const url="http://localhost:5000/employees";
 export async function addEmployee(employee){
     const response=await axios.post(url+"/add",employee);
     //const response=await axios.post(url,employee);
+   // console.log(response);
     return response.data;
 }
 export function updateEmployee(employee){
@@ -17,7 +18,8 @@ export function deleteEmployeeById(_id){
 export function getEmployeeById(_id){
     
 }
-export function getAllEmployees(){
-
+export async function getAllEmployees(){
+    const response=await axios.get(url+"/getall")
+    return response.data;
 }
 
