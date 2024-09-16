@@ -25,7 +25,7 @@ function App() {
     <MyContext.Provider value={applicationName}>  
         <h3 className='mainHeading'>{applicationName}</h3>
         <Header></Header>
-         <Outlet></Outlet>
+         <Outlet></Outlet>  {/* dynamic view */}
         <Footer></Footer>
     </MyContext.Provider>
   );

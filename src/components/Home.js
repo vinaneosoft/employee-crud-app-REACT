@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { initialArray } from "../app/model/data";
 import { OfficeLocation } from "./OfficeLocation";
 
@@ -6,6 +6,13 @@ export function Home(){
     let [offices, setOffices]= useState(()=>initialArray());
     let officeTemplate=offices.map((office, i)=><OfficeLocation  key={'co'+i} office={office}></OfficeLocation>) /* react props*/
     
+    useEffect(()=>{
+        console.log("setup...");
+        return ()=>{
+            console.log("clean up.....");
+            
+        }
+    })
     return (
         <article>
             <p>

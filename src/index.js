@@ -29,7 +29,7 @@ const childRoutes=[
         element:<EmployeeForm></EmployeeForm>
     },
     {
-        path:'editemployee/:_id',
+        path:'editemployee/:_id', /* _id : it will hold router parameter */
         element:<EmployeeForm></EmployeeForm>
     },
     {
@@ -48,9 +48,7 @@ const employeesrouter=createBrowserRouter(rootRoutes);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
-        <RouterProvider router={employeesrouter}></RouterProvider>
-   </React.StrictMode>
+    <RouterProvider router={employeesrouter}></RouterProvider>
 );
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

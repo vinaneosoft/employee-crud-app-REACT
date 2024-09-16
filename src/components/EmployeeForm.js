@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { Employee } from "../classes/Employee";
+import { useParams } from "react-router-dom";
 
 
 export function EmployeeForm(){
     const departments=['LD', 'JS','HR','PHP','JAVA'];
     let [employee, setEmployee]=useState(new Employee());
-    // use hook useParams to extract data from current active route
+    const {_id}=useParams();
+    console.log(_id);
+    // further we will search the employee to display in form
     function changeState(ev){
        console.log(ev.target.value);
        console.log(ev.target.id);
