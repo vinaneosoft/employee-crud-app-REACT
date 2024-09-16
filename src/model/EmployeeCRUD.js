@@ -19,7 +19,7 @@ export function getEmployeeById(_id){
     
 }
 export async function getAllEmployees(){
-    const response=await axios.get(url+"/getall")
+    const response=await axios.get(url+"/getall") // url2
     return response.data;
 }
 
