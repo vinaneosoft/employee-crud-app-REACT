@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
 import { Employee } from "../classes/Employee";
-import { useLoaderData, useNavigate, useParams } from "react-router-dom";
-import {addEmployee} from '../model/EmployeeCRUD';
+import { useLoaderData, useLocation, useNavigate, useParams } from "react-router-dom";
+import {addEmployee, updateEmployee} from '../model/EmployeeCRUD';
 
 export function EmployeeForm(){
-    const {_id}=useParams();
+    const location=useLocation();
+  //  const {_id}=useParams(); // if we want to use param data then use call this hook
     //console.log(_id);
     const emp=useLoaderData();
     const departments=['LD', 'JS','HR','PHP','JAVA'];
     let [employee, setEmployee]=useState(initialEmployee());
     function initialEmployee(){
-        if(_id==undefined)
-            return new Employee();
+        if(location.pathname.includes("addemployee")) // we will check active route
+            return new Employee(); // new employee
         else{
             let jd=emp.joining_date;
             emp.joining_date=jd.slice(0,jd.length-1);
-            return emp;
+            return emp; // searched employee
         }
     }
     const navigate=useNavigate();
-
     function changeState(ev){
        console.log(ev.target.value);
        console.log(ev.target.id);
@@ -27,15 +27,15 @@ export function EmployeeForm(){
        setEmployee({...employee, [ev.target.id]:ev.target.value});
     }
     useEffect(()=>{
-       // console.log(employee);
+      // console.log(location);
     })
     function collectData(ev){
         ev.preventDefault();
-        if(_id===undefined){
+        if(location.pathname.includes("addemployee")){ // active route
            addEmp();
         }
         else{
-            console.log("update logic");
+            updateEmp();
         }
     }
     async function addEmp(){
@@ -48,6 +48,16 @@ export function EmployeeForm(){
         else
             window.alert("Something went wrong while adding new employee....")
     }
+    async function updateEmp(){
+        const data=await updateEmployee(employee);
+        console.log(data);
+        if(data.modifiedCount>0){  /* emp!==null && emp!=="" */
+            window.alert(`Employee with id ${employee._id} updated successfully...`)
+            navigate('/employees');
+        }
+        else
+            window.alert("Something went wrong while updating employee....")
+    }
     return (
      <>
      <h4 className="text-center">EMPLOYEE FORM</h4>
@@ -55,7 +65,7 @@ export function EmployeeForm(){
           <form className="w-50 bg-secondary p-3" onSubmit={collectData}>
             <div className="mb-3">
                 <label htmlFor="_id" className="form-label">ID</label>
-                <input type="number" className="form-control" id="_id"  value={employee._id} onChange={changeState} required />
+                <input type="number" className="form-control" id="_id"  value={employee._id} onChange={changeState} required readOnly={location.pathname.includes("editemployee")} />
             </div>
             <div className="mb-3">
                 <label htmlFor="emp_name" className="form-label">NAME</label>
@@ -85,7 +95,7 @@ export function EmployeeForm(){
             </div>
             <div className="mb-3">
                 <label htmlFor="secrete_code" className="form-label">SECRETE CODE</label>
-                <input type="text" className="form-control" id="secrete_code" value={employee.secrete_code} onChange={changeState} required/>
+                <input type="password" className="form-control" id="secrete_code" value={employee.secrete_code} onChange={changeState} required/>
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
             <button type="reset" className="btn btn-primary">Reset</button>
