@@ -1,14 +1,22 @@
 import { useEffect, useState } from "react";
 import { Employee } from "../classes/Employee";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import {addEmployee} from '../model/EmployeeCRUD';
 
 export function EmployeeForm(){
-    const departments=['LD', 'JS','HR','PHP','JAVA'];
-    let [employee, setEmployee]=useState(new Employee());
-    const navigate=useNavigate();
     const {_id}=useParams();
     console.log(_id);
+    const emp=useLoaderData();
+    const departments=['LD', 'JS','HR','PHP','JAVA'];
+    let [employee, setEmployee]=useState(initialEmployee());
+    function initialEmployee(){
+        if(_id==undefined)
+            return new Employee();
+        else
+            return emp;
+    }
+    const navigate=useNavigate();
+   
     // further we will search the employee to display in form
     function changeState(ev){
        console.log(ev.target.value);

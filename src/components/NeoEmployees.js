@@ -13,12 +13,11 @@ export function NeoEmployees(){
         setEmployees(data);
     }
     async function deleteEmployee(_id){
-        // employee to be deleted
-        console.log("data from child:"+_id);
+        //console.log("data from child:"+_id);
         const ans=window.confirm("Do you really want to delete?");
         if(ans){
             const data=await deleteEmployeeById(_id);
-            console.log(data); 
+           // console.log(data); 
             if(data.deletedCount>0) /* data!=null */
             {
                 window.alert("Employee deleted successfully....");

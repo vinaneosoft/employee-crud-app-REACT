@@ -10,7 +10,7 @@ import { NeoEmployees } from './components/NeoEmployees.js';
 import { Home } from './components/Home.js';
 import { EmployeeForm } from './components/EmployeeForm.js';
 import { AdminLogin } from './components/AdminLogin.js';
-import { getAllEmployees } from './model/EmployeeCRUD.js';
+import { getAllEmployees, getEmployeeById } from './model/EmployeeCRUD.js';
 
 const childRoutes=[
     {
@@ -34,7 +34,10 @@ const childRoutes=[
     },
     {
         path:'editemployee/:_id', /* _id : it will hold router parameter */
-        element:<EmployeeForm></EmployeeForm>
+        element:<EmployeeForm></EmployeeForm>,
+        loader:async ({params})=>{
+            return await getEmployeeById(params._id);
+        }
     },
     {
         path:'adminlogin',

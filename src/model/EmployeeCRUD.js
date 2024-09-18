@@ -16,8 +16,9 @@ export async function deleteEmployeeById(_id){
     const response=await axios.delete(`${url}/delete/${_id}`) //`${url2}/${_id}`
     return response.data; // query result
 }
-export function getEmployeeById(_id){
-    
+export async function getEmployeeById(_id){
+    const response=await axios.get(`${url}/get/${_id}`);
+    return response.data;
 }
 export async function getAllEmployees(){
     const response=await axios.get(url+"/getall") // url2
