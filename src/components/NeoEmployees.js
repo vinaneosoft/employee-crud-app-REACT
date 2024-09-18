@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { EmployeeCard } from "./EmployeeCard";
-import { deleteEmployeeById, getAllEmployees } from "../model/EmployeeCRUD";
+import { deleteEmployeeById, getAllEmployees, getEmployeeByName } from "../model/EmployeeCRUD";
 import { useLoaderData } from "react-router-dom";
 
 
 export function NeoEmployees(){
+    const nameNode=useRef();
     const data=useLoaderData();
     let [employees, setEmployees]=useState(data); 
 
@@ -27,6 +28,15 @@ export function NeoEmployees(){
                 window.alert("Something went wrong while deleting....");
         }
     }  
+    function searchEmp(emp_name){
+        console.log(emp_name);
+        const data=getEmployeeByName(emp_name)
+        if(data!=null)
+            setEmployees(data);
+        else
+            console.log("NOT FOUND");
+            
+    }
     useEffect(()=>{ 
         console.log("in useEffect");
       //  getEmps();
@@ -34,8 +44,15 @@ export function NeoEmployees(){
 
     const employeeCards=employees.map((employee, i)=><EmployeeCard key={'e'+i} employee={employee} deleteEmployee={deleteEmployee}></EmployeeCard>)
     return(
+        <>
+        <section className="m-2">
+            <label>Employee name to search:</label>
+            <input type="text" ref={nameNode} onKeyUp={()=>searchEmp(nameNode.current.value)}></input>
+        </section>
         <div className="row">
             {employeeCards}
         </div>
+        </>
+      
     );
 }
