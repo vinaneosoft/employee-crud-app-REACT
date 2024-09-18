@@ -5,19 +5,21 @@ import {addEmployee} from '../model/EmployeeCRUD';
 
 export function EmployeeForm(){
     const {_id}=useParams();
-    console.log(_id);
+    //console.log(_id);
     const emp=useLoaderData();
     const departments=['LD', 'JS','HR','PHP','JAVA'];
     let [employee, setEmployee]=useState(initialEmployee());
     function initialEmployee(){
         if(_id==undefined)
             return new Employee();
-        else
+        else{
+            let jd=emp.joining_date;
+            emp.joining_date=jd.slice(0,jd.length-1);
             return emp;
+        }
     }
     const navigate=useNavigate();
-   
-    // further we will search the employee to display in form
+
     function changeState(ev){
        console.log(ev.target.value);
        console.log(ev.target.id);
