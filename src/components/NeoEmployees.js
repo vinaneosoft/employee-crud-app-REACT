@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { EmployeeCard } from "./EmployeeCard";
-import { getAllEmployees } from "../model/EmployeeCRUD";
+import { deleteEmployeeById, getAllEmployees } from "../model/EmployeeCRUD";
 import { useLoaderData } from "react-router-dom";
 
 
@@ -12,9 +12,21 @@ export function NeoEmployees(){
         const data=await getAllEmployees();
         setEmployees(data);
     }
-    function deleteEmployee(_id){
+    async function deleteEmployee(_id){
         // employee to be deleted
         console.log("data from child:"+_id);
+        const ans=window.confirm("Do you really want to delete?");
+        if(ans){
+            const data=await deleteEmployeeById(_id);
+            console.log(data); 
+            if(data.deletedCount>0) /* data!=null */
+            {
+                window.alert("Employee deleted successfully....");
+                getEmps();
+            }
+            else
+                window.alert("Something went wrong while deleting....");
+        }
     }  
     useEffect(()=>{ 
         console.log("in useEffect");
