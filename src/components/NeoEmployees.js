@@ -49,8 +49,7 @@ export function NeoEmployees(){
     }
     useEffect(()=>{ 
         console.log("in useEffect");
-        console.log(employees);
-        
+       // console.log(employees);
       //  getEmps();
     }/* ,[] */)
 

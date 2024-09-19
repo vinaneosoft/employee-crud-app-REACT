@@ -8,7 +8,9 @@ return (
     <figure className="col-lg-4 text-center">
         <h6>#{employee._id}</h6>
         <figcaption><b>{employee.emp_name}</b></figcaption>
-        <img className="rounded-pill" src={employee.employee_pic!=undefined?`data:image/png;base64,${employee.employee_pic}`:sample_pic} height="170" width="170" alt="employee" />
+        <img className="rounded-pill" 
+        src={employee.employee_pic!=undefined?`data:image/png;base64,${employee.employee_pic}`:sample_pic} 
+        height="170" width="170" alt="employee" />
         <Link to={`/editpic/${employee._id}`} className="btn btn-info m-2">Edit Pic</Link> 
     </figure>
     <div className="col-lg-8">
