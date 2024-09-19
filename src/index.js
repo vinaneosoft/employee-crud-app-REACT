@@ -11,6 +11,7 @@ import { Home } from './components/Home.js';
 import { EmployeeForm } from './components/EmployeeForm.js';
 import { AdminLogin } from './components/AdminLogin.js';
 import { getAllEmployees, getEmployeeById } from './model/EmployeeCRUD.js';
+import { FileUpload } from './components/FileUpload.js';
 
 const childRoutes=[
     {
@@ -42,6 +43,10 @@ const childRoutes=[
     {
         path:'adminlogin',
         element:<AdminLogin></AdminLogin>
+    },
+    {
+        path:'editpic/:_id',
+        element:<FileUpload></FileUpload>
     }
 ]
 const rootRoutes=[
