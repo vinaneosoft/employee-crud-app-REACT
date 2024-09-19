@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { EmployeeCard } from "./EmployeeCard";
-import { deleteEmployeeById, getAllEmployees, getEmployeeByName } from "../model/EmployeeCRUD";
+import { deleteEmployeeById, getAllEmployees, getEmployeesByName } from "../model/EmployeeCRUD";
 import { useLoaderData } from "react-router-dom";
 
 
@@ -8,7 +8,7 @@ export function NeoEmployees(){
     const nameNode=useRef();
     const data=useLoaderData();
     let [employees, setEmployees]=useState(data); 
-
+    let [errorMessage, setMessage]=useState("");
     async function getEmps(){
         const data=await getAllEmployees();
         setEmployees(data);
@@ -28,13 +28,22 @@ export function NeoEmployees(){
                 window.alert("Something went wrong while deleting....");
         }
     }  
-    function searchEmp(emp_name){
-        console.log(emp_name);
-        const data=getEmployeeByName(emp_name)
-        if(data!=null)
+    async function  searchEmp(emp_name){
+        console.log("name", emp_name);
+        if(emp_name!=="")
+        {
+            const data=await getEmployeesByName(emp_name);
+            console.log(data);
+            if(data.length>0)
+                setEmployees(data);
+            else
+                setMessage("NOT FOUND");
+        }
+        else{
+            setMessage("");
             setEmployees(data);
-        else
-            console.log("NOT FOUND");
+        }
+            
             
     }
     useEffect(()=>{ 
@@ -48,6 +57,7 @@ export function NeoEmployees(){
         <section className="m-2">
             <label>Employee name to search:</label>
             <input type="text" ref={nameNode} onKeyUp={()=>searchEmp(nameNode.current.value)}></input>
+            <span className="text-danger text-bold"> {errorMessage}</span>
         </section>
         <div className="row">
             {employeeCards}

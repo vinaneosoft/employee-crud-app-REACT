@@ -23,7 +23,7 @@ export async function getEmployeeById(_id){
     const response=await axios.get(`${url}/get/${_id}`); //`${url2}/${_id}`
     return response.data;
 }
-export async function getEmployeeByName(emp_name){
+export async function getEmployeesByName(emp_name){
     const response=await axios.get(`${url}/getemp/${emp_name}`); //`${url2}/${_id}`
     return response.data;
 }

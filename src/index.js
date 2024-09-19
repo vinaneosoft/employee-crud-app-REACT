@@ -26,7 +26,7 @@ const childRoutes=[
     },
     {
         path:'home',
-        element:<Home></Home>
+        element:<Home></Home>,
     },
     {
         path:'addemployee',
