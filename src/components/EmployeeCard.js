@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-
+import sample_pic from "../resources/sampleprofilepic.png"; 
 export function EmployeeCard({employee, deleteEmployee}){
-    const sample_pic="https://www.nordstudio.ch/wp/wp-content/uploads/2018/02/mitarbeiter-business-fotos_06.jpg";
+    //const sample_pic="https://pluspng.com/img-png/png-employee-account-avatar-business-colleague-employee-female-group-human-512.png";
 return (
 <div className="col-sm-6 border border-4">
 <article className="row bg-secondary p-2">
