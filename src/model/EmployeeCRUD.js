@@ -24,7 +24,7 @@ export async function getEmployeeById(_id){
     return response.data;
 }
 export async function getEmployeesByName(emp_name){
-    const response=await axios.get(`${url}/getemp/${emp_name}`); //`${url2}/${_id}`
+    const response=await axios.get(`${url}/getbyname/${emp_name}`); //`${url2}/${_id}`
     return response.data;
 }
 export async function getAllEmployees(){

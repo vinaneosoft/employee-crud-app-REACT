@@ -21,8 +21,8 @@ export function EmployeeForm(){
     }
     const navigate=useNavigate();
     function changeState(ev){
-       console.log(ev.target.value);
-       console.log(ev.target.id);
+      // console.log(ev.target.value);
+      // console.log(ev.target.id);
        // setId(ev.target.value);
        setEmployee({...employee, [ev.target.id]:ev.target.value});
     }
@@ -50,7 +50,7 @@ export function EmployeeForm(){
     }
     async function updateEmp(){
         const data=await updateEmployee(employee);
-        console.log(data);
+       // console.log(data);
         if(data.modifiedCount>0){  /* emp!==null && emp!=="" */
             window.alert(`Employee with id ${employee._id} updated successfully...`)
             navigate('/employees');

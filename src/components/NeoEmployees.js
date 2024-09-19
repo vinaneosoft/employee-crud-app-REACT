@@ -33,7 +33,7 @@ export function NeoEmployees(){
         if(emp_name!=="")
         {
             const data=await getEmployeesByName(emp_name);
-            console.log(data);
+            //console.log(data);
             if(data.length>0)
                 setEmployees(data);
             else
