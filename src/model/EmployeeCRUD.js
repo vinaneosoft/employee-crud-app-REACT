@@ -32,3 +32,13 @@ export async function getAllEmployees(){
     return response.data;
 }
 
+export async function uploadEmployeePic(_id,employee_pic){
+    //console.log(_id);
+    //console.log(employee_pic);
+    let formData=new FormData();
+    formData.append('employee_pic',employee_pic)
+    const response=await axios.put(`${url}/upload/${_id}`,formData)
+    //console.log(response.data);
+    return response.data;
+}
+
