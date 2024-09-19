@@ -11,6 +11,7 @@ export function NeoEmployees(){
     let [errorMessage, setMessage]=useState("");
     async function getEmps(){
         const data=await getAllEmployees();
+        console.log(data);
         setEmployees(data);
     }
     async function deleteEmployee(_id){
@@ -48,6 +49,8 @@ export function NeoEmployees(){
     }
     useEffect(()=>{ 
         console.log("in useEffect");
+        console.log(employees);
+        
       //  getEmps();
     }/* ,[] */)
 

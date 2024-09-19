@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 
 export function EmployeeCard({employee, deleteEmployee}){
+    const sample_pic="https://www.nordstudio.ch/wp/wp-content/uploads/2018/02/mitarbeiter-business-fotos_06.jpg";
 return (
 <div className="col-sm-6 border border-4">
 <article className="row bg-secondary p-2">
     <figure className="col-lg-4 text-center">
         <h6>#{employee._id}</h6>
         <figcaption><b>{employee.emp_name}</b></figcaption>
-        <img className="rounded-pill" src="https://www.nordstudio.ch/wp/wp-content/uploads/2018/02/mitarbeiter-business-fotos_06.jpg" height="170" width="170" alt="employee" />
+        <img className="rounded-pill" src={employee.employee_pic!=undefined?`data:image/png;base64,${employee.employee_pic}`:sample_pic} height="170" width="170" alt="employee" />
         <Link to={`/editpic/${employee._id}`} className="btn btn-info m-2">Edit Pic</Link> 
     </figure>
     <div className="col-lg-8">
