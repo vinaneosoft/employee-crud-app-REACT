@@ -61,6 +61,7 @@ export function NeoEmployees(){
             <input type="text" ref={nameNode} onKeyUp={()=>searchEmp(nameNode.current.value)}></input>
             <span className="text-danger text-bold"> {errorMessage}</span>
         </section>
+        
         <div className="row">
             {employeeCards}
         </div>

@@ -17,7 +17,8 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-
+import { Provider } from 'react-redux';
+import store from './reactredux/store.js';
 
 const childRoutes=[
     {
@@ -66,7 +67,9 @@ const employeesrouter=createBrowserRouter(rootRoutes);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <RouterProvider router={employeesrouter}></RouterProvider>
+    <Provider store={store}>
+        <RouterProvider router={employeesrouter}></RouterProvider>
+    </Provider>
 );
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
