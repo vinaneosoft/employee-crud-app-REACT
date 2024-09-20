@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Employee } from "../classes/Employee";
 import { useLoaderData, useLocation, useNavigate, useParams } from "react-router-dom";
 import {addEmployee, updateEmployee} from '../model/EmployeeCRUD';
-
+import Button from '@mui/material/Button';
 export function EmployeeForm(){
     const location=useLocation();
   //  const {_id}=useParams(); // if we want to use param data then use call this hook
@@ -97,8 +97,8 @@ export function EmployeeForm(){
                 <label htmlFor="secrete_code" className="form-label">SECRETE CODE</label>
                 <input type="password" className="form-control" id="secrete_code" value={employee.secrete_code} onChange={changeState} required/>
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-            <button type="reset" className="btn btn-primary">Reset</button>
+            <Button variant="contained"  className="m-2" color="success">Submit</Button>
+            <Button variant="contained" color="success" >Reset</Button>
         </form> 
       </div>
      </>

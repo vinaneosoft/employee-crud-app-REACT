@@ -1,5 +1,5 @@
 import { useRef } from "react";
-
+import Button from '@mui/material/Button';
 
 export function AdminLogin(){
     let usernameNode=useRef();
@@ -25,8 +25,8 @@ export function AdminLogin(){
                    <label htmlFor="password" className="form-label">PASSWORD</label>
                    <input type="password" className="form-control" id="password" ref={passwordNode}  required />
                </div>
-               <button type="submit" className="btn btn-primary">Submit</button>
-               <button type="reset" className="btn btn-primary">Reset</button>
+               <Button variant="contained"  className="m-2" color="secondary">Submit</Button>
+               <Button variant="contained" color="secondary" >Reset</Button>
            </form> 
          </div>
         </>
