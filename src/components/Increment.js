@@ -9,7 +9,7 @@ export function Increment(){
         <p>
             {counter1}
         </p>
-        <button onClick={()=>dispatch(increment())}>INCREMENT</button>
+        <button onClick={()=>dispatch(increment())}>INCREMENT by 1</button>
         </>
     );
 }

@@ -8,7 +8,7 @@ export function Decrement(){
         <p>
             {counter2}
         </p>
-        <button onClick={()=>dispatch(decrement())}>DECREMENT</button>
+        <button onClick={()=>dispatch(decrement())}>DECREMENT by 1</button>
         </>
     );
 }

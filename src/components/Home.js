@@ -4,6 +4,7 @@ import { OfficeLocation } from "./OfficeLocation";
 import { Increment } from "./Increment";
 import { Decrement } from "./Decrement";
 import { useSelector } from "react-redux";
+import { IncrementByAmount } from "./IncrementByAmount";
 
 export function Home(){
     const homeCounter=useSelector((state)=>state.counter.value);
@@ -33,11 +34,14 @@ export function Home(){
                 {officeTemplate}
             </section>
             <div className="row">
-                <div className="col border border-4">
+                <div className="col-3 border border-4">
                     <Increment></Increment>
                 </div>
-                <div className="col  border border-4">
+                <div className="col-3  border border-4">
                     <Decrement></Decrement>
+                </div>
+                <div className="col-6  border border-4">
+                    <IncrementByAmount></IncrementByAmount>
                 </div>
             </div>
         </article>
