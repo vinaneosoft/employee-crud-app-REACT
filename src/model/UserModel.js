@@ -1,5 +1,5 @@
 const user="admin"
-const pass="admin123"
+const pass="a123"
 
 // const url
 export function login(username, password){

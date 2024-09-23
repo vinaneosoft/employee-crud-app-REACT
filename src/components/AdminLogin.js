@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 export function AdminLogin(){
     const navigate=useNavigate();
     const [errorMessage, setMessage]=useState("");
+
     let usernameNode=useRef();
     let passwordNode=useRef();
     function collectData(ev){
@@ -14,8 +15,9 @@ export function AdminLogin(){
         const password=passwordNode.current.value;
         console.log(username);
         console.log(password);
-        const res=login(username, password);
         // we will test admin credentials
+
+        const res=login(username, password);
         if(res) {
             setMessage("");
             window.alert("You are logged in sucessfully...")
