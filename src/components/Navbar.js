@@ -11,7 +11,7 @@ export function Navbar(){
  // console.log(username);
   function logout(){
     dispatch(resetUser());
-    window.alert("Logged out..............");
+    window.alert("Logged out.....");
   }
 return(
 <nav className="navbar bg-dark navbar-expand-sm bg-body-tertiary" data-bs-theme="dark">
@@ -29,7 +29,9 @@ return(
           <Link className="nav-link" to="employees">Show Employees</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="addemployee">ADD Employee</Link>
+          <Link className="nav-link" to="addemployee" style={{
+          pointerEvents: (username==="") ? "none" : "auto",
+          }}>ADD Employee</Link> 
         </li>
       </ul>
       <form className="d-flex" role="search">

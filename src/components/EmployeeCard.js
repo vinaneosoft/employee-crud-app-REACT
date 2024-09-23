@@ -9,6 +9,8 @@ import  Typography  from "@mui/material/Typography";
 import Divider from '@mui/material/Divider';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 export function EmployeeCard({employee, deleteEmployee}){
+
+    // extract username from store
  
     const sample_pic="https://pluspng.com/img-png/png-employee-account-avatar-business-colleague-employee-female-group-human-512.png";
 return (
@@ -45,6 +47,7 @@ return (
                 <ListItemText primary={employee.dept_code}></ListItemText>
             </ListItem>
         </List>
+        {/* hide below div if no admin login, check username */} 
         <div>
             <Button component={Link} to={`/editemployee/${employee._id}`} 
             variant="contained" startIcon={<EditIcon></EditIcon>} className="m-2">EDIT</Button> 
