@@ -1,10 +1,18 @@
 import { useContext } from "react";
 import { MyContext } from "../app/model/context";
 import { Link } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { resetUser } from "../reactredux/userSlice";
 
 export function Navbar(){
   let contextData=useContext(MyContext)
+  const username=useSelector((state)=>state.user.value);
+  const dispatch=useDispatch();
+ // console.log(username);
+  function logout(){
+    dispatch(resetUser());
+    window.alert("Logged out..............");
+  }
 return(
 <nav className="navbar bg-dark navbar-expand-sm bg-body-tertiary" data-bs-theme="dark">
   <div className="container-fluid">
@@ -30,14 +38,16 @@ return(
       </form>
       <ul className="navbar-nav  mb-2 mb-lg-0">
         <li className="nav-item">
-          <Link className="nav-link" to="adminlogin">LOGIN</Link>
+          {username==="" && <Link className="nav-link" to="adminlogin">LOGIN</Link>}
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">LOGOUT</a>
+          {username!=="" && <button onClick={logout} className="nav-link" href="#">LOGOUT</button>}
         </li>
       </ul>
     </div>
+    <b className="text-white">{username}</b>
   </div>
+ 
 </nav>
 );
 

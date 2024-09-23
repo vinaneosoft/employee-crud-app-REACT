@@ -2,10 +2,12 @@ import { useRef, useState } from "react";
 import Button from '@mui/material/Button';
 import { login } from "../model/UserModel";
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { setUser } from "../reactredux/userSlice";
 export function AdminLogin(){
     const navigate=useNavigate();
     const [errorMessage, setMessage]=useState("");
+    const dispatch=useDispatch();
 
     let usernameNode=useRef();
     let passwordNode=useRef();
@@ -13,13 +15,14 @@ export function AdminLogin(){
         ev.preventDefault();
         const username=usernameNode.current.value;
         const password=passwordNode.current.value;
-        console.log(username);
-        console.log(password);
+       // console.log(username);
+      //  console.log(password);
         // we will test admin credentials
 
         const res=login(username, password);
         if(res) {
             setMessage("");
+            dispatch(setUser(username))
             window.alert("You are logged in sucessfully...")
             navigate('/home');
         }
