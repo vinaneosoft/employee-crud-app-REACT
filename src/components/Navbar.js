@@ -1,18 +1,28 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { MyContext } from "../app/model/context";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { resetUser } from "../reactredux/userSlice";
-
+import { resetUser, setUser } from "../reactredux/userSlice";
+import Cookies from "universal-cookie";
 export function Navbar(){
+  const cookie=new Cookies();
   let contextData=useContext(MyContext)
   const username=useSelector((state)=>state.user.value);
   const dispatch=useDispatch();
+  const navigate=useNavigate();
  // console.log(username);
   function logout(){
+    cookie.remove("user");
     dispatch(resetUser());
     window.alert("Logged out.....");
+    navigate("/adminlogin");
   }
+  useEffect(()=>{
+    console.log("store:", username);
+    const uname=cookie.get('user');
+    if(uname!==undefined)
+      dispatch(setUser(uname));
+  });
 return(
 <nav className="navbar bg-dark navbar-expand-sm bg-body-tertiary" data-bs-theme="dark">
   <div className="container-fluid">

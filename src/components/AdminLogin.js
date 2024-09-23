@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import Button from '@mui/material/Button';
 import { login } from "../model/UserModel";
+import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../reactredux/userSlice";
@@ -22,6 +23,9 @@ export function AdminLogin(){
         const res=login(username, password);
         if(res) {
             setMessage("");
+            const expiryDate = new Date(new Date().setDate(new Date().getDate() + 1));
+            const cookie=new Cookies("", { path: '/',expires:expiryDate});
+            cookie.set("user", username)
             dispatch(setUser(username))
             window.alert("You are logged in sucessfully...")
             navigate('/home');
