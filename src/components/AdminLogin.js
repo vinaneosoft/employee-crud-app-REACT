@@ -1,7 +1,11 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Button from '@mui/material/Button';
+import { login } from "../model/UserModel";
+import { useNavigate } from "react-router-dom";
 
 export function AdminLogin(){
+    const navigate=useNavigate();
+    const [errorMessage, setMessage]=useState("");
     let usernameNode=useRef();
     let passwordNode=useRef();
     function collectData(ev){
@@ -10,13 +14,24 @@ export function AdminLogin(){
         const password=passwordNode.current.value;
         console.log(username);
         console.log(password);
+        const res=login(username, password);
         // we will test admin credentials
+        if(res) {
+            setMessage("");
+            window.alert("You are logged in sucessfully...")
+            navigate('/home');
+        }
+        else
+            setMessage("Incorrect username or password")
     }
     return (
         <>
         <h4 className="text-center">ADMIN LOGIN</h4>
          <div className="d-flex justify-content-center">
              <form className="w-50 bg-secondary p-3" onSubmit={collectData}>
+                <div>
+                    <small className="text-danger">{errorMessage}</small>
+                </div>
                <div className="mb-3">
                    <label htmlFor="username" className="form-label">USERNAME</label>
                    <input type="text" className="form-control" id="username"  ref={usernameNode} required />
@@ -25,8 +40,8 @@ export function AdminLogin(){
                    <label htmlFor="password" className="form-label">PASSWORD</label>
                    <input type="password" className="form-control" id="password" ref={passwordNode}  required />
                </div>
-               <Button variant="contained"  className="m-2" color="secondary">Submit</Button>
-               <Button variant="contained" color="secondary" >Reset</Button>
+               <Button type="submit" variant="contained"  className="m-2" color="secondary">Submit</Button>
+               <Button type="reset" variant="contained" color="secondary" >Reset</Button>
            </form> 
          </div>
         </>
